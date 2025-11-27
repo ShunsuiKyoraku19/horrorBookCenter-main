@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+    background-color: black;
+    color: white;
+    font-size: 30px;
+    font-family: 'Libre Baskerville', serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Garante centralização vertical */
+}
+
+body {
+    background-color: black;
+    color: white;
+    font-size: 30px;
+    font-family: 'Libre Baskerville', serif; /* Fonte importada aplicada */
+    margin: 0;
+    padding: 0;
+}
+.navbar{
+background-color: rgb(243, 5, 124);
+padding: 15px 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: fixed;
+top: 0;
+width: 100%;
+z-index: 1000;
+
+}
+.nav-links {
+list-style: none;
+display: flex;
+gap: 100px;
+margin: 0;
+padding: 10px;
+margin-right: 1110px;
+font-size: 50px;
+}
+
+.nav-links a{
+    text-decoration: none;
+    color: #310222;
+    font-weight: bold;
+    transition: color 0.3s;
+
+}
+.nav-links a:hover{
+color: white;
+
+
+
+
+}
+/* CONTAINER DO FORMULÁRIO */
+.container {
+    background-color: black;
+    padding: 30px; /* Reduzi o padding */
+    border-radius: 10px;
+    text-align: center;
+    width: 320px; /* Ajustado para ficar mais proporcional */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* TÍTULO */
+h2 {
+    margin-bottom: 20px;
+}
+
+/* INPUTS */
+input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* BOTÃO */
+button {
+    background-color: #64DD17; /* Verde Lima */
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+button:hover {
+    background-color: #ff0000; /* Vermelho no hover */
+    transform: scale(1.05);
+}
+
+p {
+    position: absolute;
+    top: 800px; /* Ajuste conforme necessário */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    margin: 0;
+}

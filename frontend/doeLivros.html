@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="estilos/css.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="Logo"  onmouseover="playMusic()" onmouseout="pauseMusic()"><img src="images/livroLogo.png alt=" width="150px"></div>
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="curiosidades.html">Livros</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
+            <li><a href="loguin.html">Loguin</a></li>
+        </ul>
+    </nav>
+    <audio id="music" src="musica.mp3"></audio>
+
+
+
+
+
+
+    <script> 
+        function playMusic() {
+            const audio = document.getElementById("music");
+            audio.play();
+        }
+        
+        function pauseMusic() {
+            const audio = document.getElementById("music");
+            audio.pause();
+            audio.currentTime = 0; // Reinicia a música quando o mouse sai
+        }
+        
+        </script>
+    
+</body>
+</html>

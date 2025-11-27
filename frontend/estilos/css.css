@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Libre Baskerville', serif;
+    margin: 0;
+}
+
+.navbar {
+    background-color: #f1f1f1;
+    padding: 12px 25px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+h1 {
+    color: rgb(68, 0, 0);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.logo img {
+    width: 120px;
+    height: auto;
+    transition: .2s;
+}
+
+.logo img:hover {
+    transform: scale(1.06);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-links a {
+    color: #310222;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 20px;
+    transition: .2s;
+}
+
+.nav-links a:hover {
+    color: red;
+}
+
+.catalogo {
+    margin-top: 150px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.livro {
+    margin-top: 70px;
+    width: 50%;
+    height: 360px;
+    border-radius: 8px;
+    background: #000000;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: .3s;
+}
+
+.livro img {
+    width: 70%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+.livro:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 20px rgba(255,0,0,0.4);
+}
+
+@media(max-width: 900px) {
+    .catalogo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 600px) {
+    .catalogo {
+        grid-template-columns: 1fr;
+    }
+
+    .nav-links {
+        position: static;
+        transform: none;
+        justify-content: center;
+    }
+
+    .logo img {
+        width: 90px;
+    }
+}

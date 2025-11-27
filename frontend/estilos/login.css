@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+    background-color: black;
+    color: white;
+    font-size: 30px;
+    font-family: 'Libre Baskerville', serif; /* Fonte importada aplicada */
+    margin: 0;
+    padding: 0;
+}
+.navbar{
+background-color: rgb(243, 5, 124);
+padding: 15px 20px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: fixed;
+top: 0;
+width: 100%;
+z-index: 1000;
+
+}
+.nav-links {
+list-style: none;
+display: flex;
+gap: 100px;
+margin: 0;
+padding: 10px;
+margin-right: 1110px;
+font-size: 50px;
+}
+
+.nav-links a{
+    text-decoration: none;
+    color: #310222;
+    font-weight: bold;
+    transition: color 0.3s;
+
+}
+.nav-links a:hover{
+color: white;
+
+
+
+
+}
+p {
+    color: rgb(253, 253, 253); /* Cor padrão do texto */
+    padding: 10px;
+    transition: color 0.3s ease; /* Suaviza a transição de cor */
+}
+
+p:hover {
+    color: rgb(233, 6, 6); /* Cor do texto ao passar o mouse */
+}
+.Contenção {
+    background-color: black; /* Cor do fundo */
+    padding: 40px; /* Corrigido para um valor menor e adequado */
+    border-radius: 10px;
+    text-align: center;
+    width: 300px; /* Ajustado para um tamanho mais proporcional */
+
+    /* Centralizando */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+    
+    button {
+        background-color: #fafafa; /* Verde Lima */
+        color: black;
+        border: none;
+        padding: 5px;
+        width: 100%;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        
+        
+    }
+    
+    button:hover {
+        background-color: #ff0000;
+    }
+    
+    
+    
+
+
+h2{
+margin-bottom: 20px;
+
+}
+input{
+width: 100%;
+padding: 10px;
+margin: 10px 0;
+border: none;
+border-radius: 5px;
+}
+button {
+    background-color: #64DD17; 
+    color: white;
+    border: none;
+    padding: 10px 20px; 
+    width: auto; 
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+button:hover {
+    background-color: #ff0000; 
+    transform: scale(1.05); 
+}
