@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel do Estudante - HorrorBookCenter</title>
+    <link rel="stylesheet" href="estilos/painel.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/livroLogo.png" alt="livro">
+        </div>
+        <h1>Painel do Estudante</h1>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="index.html">Sair</a></li>
+        </ul>
+    </nav>
+
+    <div class="painel-container">
+        <div class="abas-estudante">
+            <button class="aba-btn ativa" data-aba="pesquisa">🔍 Pesquisar Livros</button>
+            <button class="aba-btn" data-aba="alugueis">📖 Meus Aluguéis</button>
+            <button class="aba-btn" data-aba="historico">📚 Histórico</button>
+        </div>
+
+        
+        <div id="pesquisa" class="aba-conteudo ativa">
+            <div class="filtro-pesquisa">
+                <input type="text" id="inputPesquisa" class="campo-pesquisa" placeholder="Digite o título ou autor...">
+                <select id="filtroCategoria" class="filtro-dropdown">
+                    <option value="">Todas as categorias</option>
+                </select>
+            </div>
+
+            <div id="listaLivrosPesquisa" class="lista-livros-grid">
+                
+            </div>
+        </div>
+
+        
+        <div id="alugueis" class="aba-conteudo">
+            <h2>📖 Livros Alugados</h2>
+            <div id="listaAlugueis" class="lista-alugueis">
+              
+            </div>
+        </div>
+
+       
+        <div id="historico" class="aba-conteudo">
+            <h2>📚 Histórico de Aluguéis</h2>
+            <div id="listaHistorico" class="lista-historico">
+                
+            </div>
+        </div>
+    </div>
+
+    
+    <div id="modalLivro" class="modal">
+        <div class="modal-conteudo">
+            <span class="fechar">&times;</span>
+            <div class="modal-livro-detalhes">
+                <img id="modalImagem" src="" alt="Livro">
+                <div class="modal-info">
+                    <h3 id="modalTitulo"></h3>
+                    <p><strong>Autor:</strong> <span id="modalAutor"></span></p>
+                    <p><strong>Categoria:</strong> <span id="modalCategoria"></span></p>
+                    <p><strong>Disponível:</strong> <span id="modalDisponivel"></span></p>
+                    <div class="modal-acoes">
+                        <input type="date" id="dataDevolvao" class="campo-data">
+                        <button id="btnAlugar" class="btn-confirmar">Alugar Livro</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/estudante.js"></script>
+</body>
+</html>

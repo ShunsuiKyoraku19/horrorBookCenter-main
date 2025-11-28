@@ -1,0 +1,189 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Libre Baskerville', serif;
+    margin: 0;
+}
+
+/* -----------------------------------------
+   NAVBAR RECONSTRUÍDA
+------------------------------------------ */
+
+.navbar {
+    background-color: #f1f1f1;
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+/* Logo ---------------------------------- */
+.logo img {
+    width: 110px;
+    transition: .2s;
+}
+.logo img:hover {
+    transform: scale(1.06);
+}
+
+/* Título -------------------------------- */
+h1 {
+    color: rgb(68, 0, 0);
+    margin: 0;
+}
+
+/* LINKS DO MENU ------------------------- */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+}
+.nav-links a {
+    color: #310222;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 26px;
+    transition: .2s;
+}
+.nav-links a:hover {
+    color: red;
+}
+
+/* -----------------------------------------
+   BOTÕES LATERAIS (BIBLIOTECÁRIO / ESTUDANTE)
+------------------------------------------ */
+
+.botoes-laterais {
+    display: flex;
+    gap: 15px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Botão Geral */
+.btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: bold;
+    color: white;
+    transition: .2s;
+}
+
+/* Bibliotecário */
+.btn-bibliotecario {
+    background-color: #8b0000;
+}
+.btn-bibliotecario:hover {
+    background-color: #b30000;
+    transform: scale(1.06);
+}
+
+/* Estudante */
+.btn-estudante {
+    background-color: #004aad;
+}
+.btn-estudante:hover {
+    background-color: #006aff;
+    transform: scale(1.06);
+}
+
+/* -----------------------------------------
+   CATÁLOGO DE LIVROS
+------------------------------------------ */
+.catalogo {
+    margin-top: 170px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.livro {
+    width: 100%;
+    height: 350px;
+    border-radius: 8px;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.livro img {
+    width: 80%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.livro:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 20px rgba(255,0,0,0.4);
+}
+
+/* -----------------------------------------
+   RESPONSIVIDADE
+------------------------------------------ */
+
+/* tablets */
+@media(max-width: 1000px) {
+    .nav-links a {
+        font-size: 22px;
+    }
+    .catalogo {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* celulares */
+@media(max-width: 700px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        padding-bottom: 25px;
+    }
+
+    h1 {
+        font-size: 26px;
+    }
+
+    .nav-links {
+        gap: 25px;
+        flex-wrap: wrap;
+    }
+
+    .nav-links a {
+        font-size: 22px;
+    }
+
+    .botoes-laterais {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .catalogo {
+        grid-template-columns: 1fr;
+        margin-top: 240px;
+    }
+
+    .logo img {
+        width: 85px;
+    }
+}
