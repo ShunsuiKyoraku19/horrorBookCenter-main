@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HorrorBookCenter</title>
+    <link rel="stylesheet" href="estilos/css.css">
+</head>
+<body>
+<nav class="navbar">
+
+    <div class="logo" onmouseover="playMusic()" onmouseout="pauseMusic()">
+        <img src="images/livroLogo.png" alt="livro" />
+    </div>
+
+    <h1>HorrorBookCenter</h1>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="livros.html">Livros</a></li>
+        <li><a href="cadastro.html">Cadastro</a></li>
+        <li><a href="login.html">Login</a></li>
+    </ul>
+
+    <div class="botoes-laterais">
+        <button class="btn btn-bibliotecario" onclick="abrirBibliotecario()">Bibliotecário</button>
+        <button class="btn btn-estudante" onclick="abrirEstudante()">Estudante</button>
+    </div>
+
+</nav>
+
+      <!-- ÁREA DO BIBLIOTECÁRIO -->
+<div class="bibliotecario-area">
+    <button class="btn-bibliotecario" onclick="abrirBibliotecario()">
+        Área do Bibliotecário
+    </button>
+</div>
+
+<!-- ÁREA DO ESTUDANTE -->
+<div class="estudante-area">
+    <button class="btn-estudante" onclick="abrirEstudante()">
+        Perfil do Estudante
+    </button>
+</div>
+
+
+    <section class="catalogo">
+        <div class="livro"><img src="images/livro1.png" alt=""></div>
+        <div class="livro"><img src="images/livro2.png" alt=""></div>
+        <div class="livro"><img src="images/livro3.png" alt=""></div>
+        <div class="livro"><img src="images/livro4.png" alt=""></div>
+        <div class="livro"><img src="images/livro5.png" alt=""></div>
+        <div class="livro"><img src="images/livro6.png" alt=""></div>
+    </section>
+
+<script>
+function abrirBibliotecario() {
+    window.location.href = "bibliotecario.html";
+}
+function abrirEstudante() {
+    window.location.href = "painelestudante.html";
+}
+</script>
+
+
+</body>
+</html>
