@@ -246,3 +246,181 @@
 
     document.addEventListener('DOMContentLoaded', init);
 })();
+
+function registerPaymentRequest(rentalId, userId, bookId) {
+    const state = loadState();
+    
+    const solicitacoes = JSON.parse(localStorage.getItem("solicitacoes_pagamento")) || [];
+
+    solicitacoes.push({
+        id_solicitacao: Date.now(),
+        rentalId,
+        userId,
+        bookId,
+        criadoEm: new Date().toISOString()
+    });
+
+    localStorage.setItem("solicitacoes_pagamento", JSON.stringify(solicitacoes));
+
+    console.log("Solicitação enviada ao bibliotecário:", solicitacoes);
+}
+
+// estudante.js
+// Lógica para gerenciar estado (books, rentals, users) + gerar solicitações de pagamento
+
+const STATE_KEY = 'app_state_v1';
+const SOLICITACOES_KEY = 'solicitacoes_pagamento_v1';
+
+/* ---------------------------
+   Helpers: load/save state
+   --------------------------- */
+function loadState() {
+    const raw = localStorage.getItem(STATE_KEY);
+    if (!raw) {
+        // estado inicial exemplo (substitua ou expanda conforme precisar)
+        const initial = {
+            users: [
+                { id: 1, name: 'Aluno Exemplo' }
+            ],
+            books: [
+                { id: 101, title: 'Livro A', disponivel: true },
+                { id: 102, title: 'Livro B', disponivel: true }
+            ],
+            rentals: [] // { id, userId, bookId, createdAt, pago:false, paidAt:null, solicitadoAoBibliotecario:false }
+        };
+        localStorage.setItem(STATE_KEY, JSON.stringify(initial));
+        return initial;
+    }
+    return JSON.parse(raw);
+}
+
+function saveState(state) {
+    localStorage.setItem(STATE_KEY, JSON.stringify(state));
+}
+
+/* ---------------------------
+   Função: criar aluguel (exemplo)
+   --------------------------- */
+function createRental(userId, bookId) {
+    const state = loadState();
+    const book = state.books.find(b => b.id === bookId);
+    if (!book) { alert('Livro não encontrado'); return null; }
+    if (!book.disponivel) { alert('Livro não está disponível'); return null; }
+
+    const newRental = {
+        id: Date.now(),
+        userId,
+        bookId,
+        createdAt: new Date().toISOString(),
+        pago: false,
+        paidAt: null,
+        solicitadoAoBibliotecario: true // marcado para solicitar pagamento ao bibliotecário
+    };
+
+    // marca livro indisponível
+    book.disponivel = false;
+    state.rentals.push(newRental);
+    saveState(state);
+
+    // registra solicitação de pagamento para o bibliotecário
+    registerPaymentRequest(newRental.id, userId, bookId);
+
+    // atualiza UI local (implemente suas funções de renderização)
+    if (typeof renderSearchResults === 'function') {
+        renderSearchResults(state.books, state.rentals, document.getElementById('search-input')?.value || '');
+    }
+    if (typeof renderRentals === 'function') {
+        renderRentals(state.books, state.rentals);
+    }
+
+    alert('Aluguel criado e solicitação de pagamento enviada ao bibliotecário.');
+    return newRental;
+}
+
+/* ---------------------------
+   Função: registrar solicitação para bibliotecário (localStorage)
+   --------------------------- */
+function registerPaymentRequest(rentalId, userId, bookId) {
+    const solicitacoes = JSON.parse(localStorage.getItem(SOLICITACOES_KEY)) || [];
+    const id_solicitacao = Date.now();
+
+    solicitacoes.push({
+        id_solicitacao,
+        rentalId,
+        userId,
+        bookId,
+        criadoEm: new Date().toISOString()
+    });
+
+    localStorage.setItem(SOLICITACOES_KEY, JSON.stringify(solicitacoes));
+    console.log('Solicitação registrada:', id_solicitacao);
+    return id_solicitacao;
+}
+
+/* ---------------------------
+   Função: bibliotecário aprova pagamento (invocado pelo painel)
+   --------------------------- */
+function approvePaymentByLibrarian(rentalId) {
+    const state = loadState();
+    const rental = state.rentals.find(r => r.id === rentalId);
+    if (!rental) { console.warn('Aluguel não encontrado para aprovação'); return false; }
+    if (rental.pago) { console.warn('Aluguel já está marcado como pago'); return false; }
+
+    rental.pago = true;
+    rental.paidAt = new Date().toISOString();
+    rental.solicitadoAoBibliotecario = false;
+
+    saveState(state);
+
+    // atualiza UI caso o estudante esteja na mesma página
+    if (document.getElementById('estudante-app')) {
+        if (typeof renderSearchResults === 'function') {
+            renderSearchResults(state.books, state.rentals, document.getElementById('search-input')?.value || '');
+        }
+        if (typeof renderRentals === 'function') {
+            renderRentals(state.books, state.rentals);
+        }
+    }
+
+    console.info(`Pagamento do aluguel ${rentalId} aprovado pelo bibliotecário.`);
+    return true;
+}
+
+/* ---------------------------
+   Função: cancelar aluguel (estudante)
+   --------------------------- */
+function cancelRental(rentalId) {
+    const state = loadState();
+    const idx = state.rentals.findIndex(r => r.id === rentalId);
+    if (idx === -1) { alert('Aluguel não encontrado'); return; }
+    const rental = state.rentals[idx];
+    if (!confirm('Deseja realmente cancelar este aluguel?')) return;
+
+    const book = state.books.find(b => b.id === rental.bookId);
+    if (book) book.disponivel = true;
+    state.rentals.splice(idx, 1);
+    saveState(state);
+
+    // Remove solicitação se existir
+    const solicitacoes = JSON.parse(localStorage.getItem(SOLICITACOES_KEY)) || [];
+    const filtradas = solicitacoes.filter(s => s.rentalId !== rentalId);
+    localStorage.setItem(SOLICITACOES_KEY, JSON.stringify(filtradas));
+
+    if (typeof renderSearchResults === 'function') {
+        renderSearchResults(state.books, state.rentals, document.getElementById('search-input')?.value || '');
+    }
+    if (typeof renderRentals === 'function') {
+        renderRentals(state.books, state.rentals);
+    }
+    alert('Aluguel cancelado.');
+}
+
+/* ---------------------------
+   Export globals (se precisar chamar de outras partes)
+   --------------------------- */
+window.createRental = createRental;
+window.registerPaymentRequest = registerPaymentRequest;
+window.approvePaymentByLibrarian = approvePaymentByLibrarian;
+window.cancelRental = cancelRental;
+window.loadState = loadState;
+window.saveState = saveState;
