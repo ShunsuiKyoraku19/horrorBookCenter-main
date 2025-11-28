@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login do Bibliotecário - HorrorBookCenter</title>
+    <link rel="stylesheet" href="estilos/bibliotecario.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="images/livroLogo.png" alt="livro">
+        </div>
+        <h1>HorrorBookCenter</h1>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="livros.html">Livros</a></li>
+            <li><a href="cadastro.html">Cadastro</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <form id="loginBibliotecarioForm">
+            <h2>Login do Bibliotecário</h2>
+
+            <label for="username">Nome de usuário:</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required>
+
+            <button type="submit">Acessar Painel</button>
+        </form>
+    </div>
+
+    <p id="Res">Mensagem</p>
+
+    <script src="scripts/bibliotecario.js"></script>
+</body>
+</html>

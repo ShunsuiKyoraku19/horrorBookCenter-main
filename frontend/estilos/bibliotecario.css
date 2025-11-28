@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
 
+/* ===== CONFIGURAÇÃO BASE ===== */
 body {
     background-color: black;
     color: white;
@@ -7,101 +8,130 @@ body {
     font-family: 'Libre Baskerville', serif;
     margin: 0;
     padding: 0;
+
+    /* Centraliza a área do login */
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
+/* ===== NAVBAR ===== */
 .navbar {
     background-color: white;
-    padding: 15px 20px;
+    padding: 15px 25px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
+
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
 }
 
+/* LOGO */
+.logo img {
+    width: 110px;
+    height: auto;
+}
+
+/* TÍTULO DO SITE */
+.navbar h1 {
+    color: black;
+    font-size: 40px;
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* LINKS */
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 100px;
+    gap: 50px;
     margin: 0;
-    padding: 10px;
-    margin-right: 1110px;
-    font-size: 50px;
+    padding: 0;
 }
 
 .nav-links a {
     text-decoration: none;
     color: #333333;
     font-weight: bold;
-    transition: color 0.3s;
+    font-size: 26px;
+    transition: 0.3s;
+    margin-right: 50px;
 }
 
 .nav-links a:hover {
     color: black;
 }
 
+/* ===== CONTAINER LOGIN ===== */
 .container {
     background-color: black;
     padding: 40px;
     border-radius: 10px;
-    text-align: center;
     width: 350px;
+    text-align: center;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
     border: 1px solid white;
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+
+    margin-top: 150px; /* por causa da navbar fixa */
 }
 
-h2 {
-    margin-bottom: 30px;
+.container h2 {
+    margin-bottom: 25px;
     color: white;
+    font-size: 28px;
 }
 
+/* ===== INPUTS ===== */
 label {
-    display: block;
+    width: 100%;
+    text-align: left;
     margin-bottom: 8px;
     font-size: 16px;
     color: white;
-    text-align: left;
-    width: 100%;
 }
 
 input {
     width: 100%;
     padding: 12px;
-    margin: 10px 0 20px 0;
-    border: 1px solid #666;
+    margin-bottom: 20px;
     border-radius: 5px;
-    font-size: 16px;
-    background-color: #333333;
+    border: 1px solid #666;
+    background-color: #333;
     color: white;
-    box-sizing: border-box;
+    font-size: 16px;
 }
 
 input:focus {
-    outline: none;
     border-color: white;
+    outline: none;
 }
 
+/* ===== BOTÃO ===== */
 button {
-    background-color: #ffffff;
+    width: 100%;
+    padding: 12px;
+    background-color: white;
     color: black;
     border: none;
-    padding: 12px;
-    width: 100%;
     border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease, transform 0.2s;
+    font-size: 18px;
     font-weight: bold;
-    margin-top: 10px;
+    cursor: pointer;
+
+    transition: background-color 0.3s ease, transform 0.2s;
 }
 
 button:hover {
@@ -110,11 +140,10 @@ button:hover {
     transform: scale(1.05);
 }
 
+/* ===== TEXTO DE RESPOSTA ===== */
 p {
     position: absolute;
-    top: 800px;
+    bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
-    text-align: center;
-    margin: 0;
 }

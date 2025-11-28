@@ -1,0 +1,346 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
+
+body {
+    background-color: black;
+    color: white;
+    font-family: 'Libre Baskerville', serif;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar {
+    background-color: #f1f1f1;
+    padding: 12px 25px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+}
+
+.navbar h1 {
+    color: rgb(68, 0, 0);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+}
+
+.logo img {
+    width: 120px;
+    height: auto;
+    transition: .2s;
+}
+
+.logo img:hover {
+    transform: scale(1.06);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 80px;
+    padding: 50px;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.nav-links a {
+    color: #310222;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 40px;
+    transition: .2s;
+}
+
+.nav-links a:hover {
+    color: red;
+}
+
+/* CONTEÚDO DO PAINEL */
+.painel-container {
+    margin-top: 150px;
+    padding: 40px;
+}
+
+.controles-bibliotecario {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 40px;
+    justify-content: center;
+}
+
+.btn-bibliotecario {
+    background: linear-gradient(135deg, #8B0000, #000000);
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 15px 30px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(139, 0, 0, 0.4);
+}
+
+.btn-bibliotecario:hover {
+    background: linear-gradient(135deg, #000000, #8B0000);
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(139, 0, 0, 0.6);
+}
+
+.sessoes-painel {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.sessao-solicitacoes, .sessao-livros {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 15px;
+    border: 2px solid #333;
+    box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
+}
+
+.sessao-solicitacoes h2, .sessao-livros h2 {
+    color: #ffffff;
+    border-bottom: 2px solid #8B0000;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+    font-size: 28px;
+}
+
+.lista-itens {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.item-solicitacao, .item-livro {
+    background-color: #2a2a2a;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #444;
+    transition: all 0.3s ease;
+}
+
+.item-solicitacao:hover, .item-livro:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+}
+
+.info-item h4 {
+    color: #ffffff;
+    margin: 0 0 10px 0;
+    font-size: 20px;
+}
+
+.info-item p {
+    margin: 5px 0;
+    color: #cccccc;
+    font-size: 16px;
+}
+
+.acoes-item {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-aprovar {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-recusar {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-remover {
+    background: linear-gradient(135deg, #ffc107, #e0a800);
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.btn-aprovar:hover, .btn-recusar:hover, .btn-remover:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* MODAL */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.modal-conteudo {
+    background-color: #1a1a1a;
+    margin: 10% auto;
+    padding: 40px;
+    border: 2px solid #8B0000;
+    border-radius: 15px;
+    width: 500px;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(139, 0, 0, 0.5);
+}
+
+.fechar {
+    color: white;
+    float: right;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.fechar:hover {
+    color: #8B0000;
+}
+
+.modal-conteudo h3 {
+    color: white;
+    margin-bottom: 30px;
+    font-size: 24px;
+    text-align: center;
+}
+
+.form-bibliotecario {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.grupo-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.grupo-form label {
+    color: white;
+    font-size: 16px;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.grupo-form input {
+    padding: 12px;
+    border: 1px solid #666;
+    border-radius: 6px;
+    background-color: #333;
+    color: white;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.grupo-form input:focus {
+    outline: none;
+    border-color: #8B0000;
+}
+
+.btn-confirmar {
+    background: linear-gradient(135deg, #8B0000, #000000);
+    color: white;
+    border: 2px solid white;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-confirmar:hover {
+    background: linear-gradient(135deg, #000000, #8B0000);
+    transform: scale(1.02);
+}
+
+/* RESPONSIVO */
+@media (max-width: 1200px) {
+    .sessoes-painel {
+        grid-template-columns: 1fr;
+    }
+    
+    .nav-links {
+        gap: 60px;
+    }
+}
+
+@media (max-width: 900px) {
+    .painel-container {
+        padding: 20px;
+        margin-top: 180px;
+    }
+    
+    .navbar {
+        flex-wrap: wrap;
+        padding: 10px 15px;
+    }
+    
+    .nav-links {
+        position: static;
+        transform: none;
+        padding: 20px;
+        gap: 40px;
+        justify-content: center;
+    }
+    
+    .modal-conteudo {
+        width: 90%;
+        margin: 20% auto;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        gap: 30px;
+    }
+    
+    .nav-links a {
+        font-size: 30px;
+    }
+    
+    .controles-bibliotecario {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-bibliotecario {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .sessao-solicitacoes, .sessao-livros {
+        padding: 20px;
+    }
+}

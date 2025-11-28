@@ -1,26 +1,33 @@
 const express = require('express');
-const router = express.Router(); // Defina o Router aqui
+const router = express.Router();
 
 // Importa o pool de conexões
-const pool = require('../db'); 
+const pool = require('../db');
 
-// Rota de registro
+// Controller do bibliotecário
+const authController = require('../controllers/authController');
+
+// -----------------------------
+// ROTA DE REGISTRO DE USUÁRIO
+// -----------------------------
 router.post('/register', async (req, res) => {
     const { username, email, password } = req.body;
 
     try {
-        // Verifica se o usuário já existe
+        // Checa se já existe
         const [existingUser] = await pool.promise().query(
-            'SELECT * FROM usuarios WHERE username = ? OR email = ?', [username, email]
+            'SELECT * FROM usuarios WHERE username = ? OR email = ?',
+            [username, email]
         );
 
         if (existingUser.length > 0) {
             return res.status(400).json({ message: 'Usuário ou email já existe' });
         }
 
-        // Insere o novo usuário no banco de dados
+        // Registra
         await pool.promise().query(
-            'INSERT INTO usuarios (username, email, password) VALUES (?, ?, ?)', [username, email, password]
+            'INSERT INTO usuarios (username, email, password) VALUES (?, ?, ?)',
+            [username, email, password]
         );
 
         res.status(201).json({ message: 'Usuário registrado com sucesso!' });
@@ -30,5 +37,10 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// Exporta o router para uso em outros arquivos
+// ----------------------------------------
+// ROTA DE LOGIN DO BIBLIOTECÁRIO
+// ----------------------------------------
+router.post('/login-bibliotecario', authController.loginBibliotecario);
+
+// Exporta tudo CERTINHO
 module.exports = router;

@@ -10,103 +10,112 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Garante centralização vertical */
+    height: 100vh;
 }
 
-body {
-    background-color: black;
-    color: white;
-    font-size: 30px;
-    font-family: 'Libre Baskerville', serif; /* Fonte importada aplicada */
-    margin: 0;
-    padding: 0;
+.navbar {
+    background-color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }
-.navbar{
-background-color: rgb(243, 5, 124);
-padding: 15px 20px;
-display: flex;
-justify-content: space-between;
-align-items: center;
-position: fixed;
-top: 0;
-width: 100%;
-z-index: 1000;
 
-}
 .nav-links {
-list-style: none;
-display: flex;
-gap: 100px;
-margin: 0;
-padding: 10px;
-margin-right: 1110px;
-font-size: 50px;
+    list-style: none;
+    display: flex;
+    gap: 100px;
+    margin: 0;
+    padding: 10px;
+    margin-right: 1110px;
+    font-size: 50px;
 }
 
-.nav-links a{
+.nav-links a {
     text-decoration: none;
-    color: #310222;
+    color: #333333;
     font-weight: bold;
     transition: color 0.3s;
-
 }
-.nav-links a:hover{
-color: white;
 
-
-
-
+.nav-links a:hover {
+    color: black;
 }
-/* CONTAINER DO FORMULÁRIO */
+
 .container {
     background-color: black;
-    padding: 30px; /* Reduzi o padding */
+    padding: 40px;
     border-radius: 10px;
     text-align: center;
-    width: 320px; /* Ajustado para ficar mais proporcional */
+    width: 350px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+    border: 1px solid white;
 }
 
-/* TÍTULO */
 h2 {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
+    color: white;
 }
 
-/* INPUTS */
+.form-group {
+    width: 100%;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 16px;
+    color: white;
+}
+
 input {
     width: 100%;
-    padding: 8px;
-    margin: 10px 0;
-    border: none;
+    padding: 12px;
+    border: 1px solid #666;
     border-radius: 5px;
     font-size: 16px;
+    background-color: #333333;
+    color: white;
+    box-sizing: border-box;
 }
 
-/* BOTÃO */
+input:focus {
+    outline: none;
+    border-color: white;
+}
+
 button {
-    background-color: #64DD17; /* Verde Lima */
-    color: white;
+    background-color: #ffffff;
+    color: black;
     border: none;
-    padding: 10px;
+    padding: 12px;
     width: 100%;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
     transition: background-color 0.3s ease, transform 0.2s;
+    font-weight: bold;
+    margin-top: 10px;
 }
 
 button:hover {
-    background-color: #ff0000; /* Vermelho no hover */
+    background-color: #666666;
+    color: white;
     transform: scale(1.05);
 }
 
 p {
     position: absolute;
-    top: 800px; /* Ajuste conforme necessário */
+    top: 800px;
     left: 50%;
     transform: translateX(-50%);
     text-align: center;
